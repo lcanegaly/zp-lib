@@ -62,6 +62,26 @@ void Zone::AddLeak(Leak* leak, char zone) {
   }
 }
 
+void Zone::AddLeak(Leak* leak) {
+  if (leak->zoneA() == "" && leak->zoneB() =="") 
+    leak->SetZones(zone_id_, "");
+  else if (leak->zoneA() != "" && leak->zoneB() == "")
+    leak->SetZones("", zone_id_);
+
+  if (leaks_.size() == 0)
+    leaks_.push_back(leak);
+  else {
+    for (int i = 0; i < leaks_.size(); i++) {
+      if (leak->get_leak_name() == leaks_[i]->get_leak_name())
+        leaks_[i] = leak;
+      else {
+        leaks_.push_back(leak);
+        return;
+      }
+    }
+  }
+}
+
 void Zone::UpdateFlows(double input_flow) {
   flow_in_ = input_flow;
   flow_out_ = 0;

@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
-
 #include "orifice/orificeflow.h"
 
 namespace zone_pressure {
 
 class Leak {
  public:
-  Leak();
+  Leak() = default;
+  ~Leak() = default;
   Leak(std::string name, double orifice_diameter, double discharge_coefficient,
        double temperature);
   double CalculateFlowFromZone(std::string requestee_zone_id,
@@ -17,6 +17,8 @@ class Leak {
                        double requestee_zone_pressure);
   double get_size() { return orifice_diameter_; }
   std::string get_leak_name() { return leak_name_; }
+  std::string zoneA() {return zone_a_id_;}
+  std::string zoneB() {return zone_b_id_;}
 
  private:
   std::string leak_name_;

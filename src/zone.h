@@ -12,8 +12,10 @@ class Zone {
   Zone();
   Zone(const Zone& z);
   Zone(std::string zone_id);
+  ~Zone() = default;
   void UpdateZone(double input_flow);
   void AddLeak(Leak* leak, char zone);
+  void AddLeak(Leak* leak);
   double get_pressure();
   double get_flow();
   std::string get_zone_id() { return zone_id_; }
@@ -24,7 +26,7 @@ class Zone {
   void UpdatePressure();
   std::string zone_id_;
   std::vector<Leak*> leaks_;
-  bool equal_flow_ = false;
+  bool equal_flow_;
   double pressure_;
   double temperature_;
   double flow_in_;
