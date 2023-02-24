@@ -18,8 +18,9 @@ double Leak::CalculateFlowFromZone(std::string requestee_zone_id,
   double pa = (requestee_zone_id == zone_a_id_)
                   ? requestee_zone_pressure - zone_b_pressure_
                   : requestee_zone_pressure - zone_a_pressure_;
-  return orifice_flow::OrificeFlowCfm(0.0, orifice_diameter_, 70.0, pa,
+  flow_ = orifice_flow::OrificeFlowCfm(0.0, orifice_diameter_, 70.0, pa,
                                       discharge_coefficient_);
+  return flow_;
 }
 
 void Leak::SetZones(std::string zone_a_id, std::string zone_b_id) {

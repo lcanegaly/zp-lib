@@ -16,11 +16,14 @@ class Leak {
   void SetZonePressure(std::string requestee_zone_id,
                        double requestee_zone_pressure);
   double get_size() { return orifice_diameter_; }
+  void set_size(double orifice) {orifice_diameter_ = orifice;}
   std::string get_leak_name() { return leak_name_; }
   std::string zoneA() {return zone_a_id_;}
   std::string zoneB() {return zone_b_id_;}
+  double flow() {return flow_;}
 
  private:
+  double flow_;
   std::string leak_name_;
   std::string zone_a_id_;
   std::string zone_b_id_;
