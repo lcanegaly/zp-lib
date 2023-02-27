@@ -36,8 +36,8 @@ double Zone::get_flow() { return flow_out_; }
 
 void Zone::UpdateZone(double input_flow) {
   if (flow_out_ - flow_in_ > 2) {
-    pressure_ = pressure_tick_;
-    pressure_tick_ /= 10;
+    //pressure_ = pressure_tick_;
+    //pressure_tick_ /= 10;
   }
   UpdateFlows(input_flow);
   UpdatePressure();
